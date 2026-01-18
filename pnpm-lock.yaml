@@ -12,8 +12,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(@grpc/grpc-js@1.14.3)(amqplib@0.10.9)
       '@coolcinema/registry':
-        specifier: ^1.0.8
-        version: 1.0.8
+        specifier: ^1.0.10
+        version: 1.0.10
       '@grpc/grpc-js':
         specifier: ^1.14.3
         version: 1.14.3
@@ -39,8 +39,8 @@ packages:
       '@grpc/grpc-js': ^1.14.3
       amqplib: ^0.10.9
 
-  '@coolcinema/registry@1.0.8':
-    resolution: {integrity: sha512-LAeJEkJ/eUWfSfcPM/UE1ZKsv1t2J+4ZSIFTLab0EHY+QV8wkbVVnfKTvfhNBuyTemEQaTsbrSJFYM6SN8XRvw==, tarball: https://npm.pkg.github.com/download/@coolcinema/registry/1.0.8/669e7eb755a6a57029bb5c0c5cfc0b11b79bdb3b}
+  '@coolcinema/registry@1.0.10':
+    resolution: {integrity: sha512-ex6gtAyPZ82xpIxzASUJPBNMFtN8tLCB0eBdhchkfPYMxURkwJrdNos1VOj0z4Zd0uKGEWWkv2k7468s9JQZIg==, tarball: https://npm.pkg.github.com/download/@coolcinema/registry/1.0.10/efcd4e63b0193e1c61113faa10a2bfca9f04bc60}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -259,7 +259,7 @@ snapshots:
       '@grpc/grpc-js': 1.14.3
       amqplib: 0.10.9
 
-  '@coolcinema/registry@1.0.8': {}
+  '@coolcinema/registry@1.0.10': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
