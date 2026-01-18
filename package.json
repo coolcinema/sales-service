@@ -18,6 +18,6 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@coolcinema/registry": "^1.0.6"
+    "@coolcinema/registry": "^1.0.8"
   }
 }
