@@ -11,7 +11,7 @@ class SalesImpl implements SalesService.SalesServiceImplementation {
 async function main() {
   const server = createServer();
   server.add(SalesService.SalesServiceDefinition, new SalesImpl());
-  await server.listen("0.0.0.0:5001");
-  console.log("🚀 Sales Service listening on 5001");
+  await server.listen("0.0.0.0:5000");
+  console.log("🚀 Sales Service listening on 5000");
 }
 main();
