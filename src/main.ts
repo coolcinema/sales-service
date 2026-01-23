@@ -1,44 +1,17 @@
-import * as path from "path";
-import * as protoLoader from "@grpc/proto-loader";
-import * as grpc from "@grpc/grpc-js";
-import { PlatformGrpcServer, getCurrentContext } from "@coolcinema/foundation";
-import { Registry } from "@coolcinema/registry";
+import { createServer } from "nice-grpc";
+import { SalesService } from "@coolcinema/catalog";
 
-// 1. Загружаем Proto файл
-const PROTO_PATH = path.join(__dirname, "proto/sales.proto");
-const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
-  keepCase: true,
-  longs: String,
-  enums: String,
-  defaults: true,
-  oneofs: true,
-});
-const protoDescriptor = grpc.loadPackageDefinition(packageDefinition) as any;
-const salesService = protoDescriptor.coolcinema.sales.SalesService;
-
-// 2. Реализация бизнес-логики
-const implementation = {
-  getPrice: (call: any, callback: any) => {
-    // ПРОВЕРКА: Достаем контекст, который распаковала Foundation
-    const ctx = getCurrentContext();
-
-    console.log("--- [Sales] gRPC Request Received ---");
-    console.log("Trace ID:", ctx?.traceId);
-    console.log("Routing Headers:", ctx?.routingHeaders);
-
-    // Эмуляция работы
-    callback(null, { amount: 500, currency: "RUB" });
-  },
-};
-
-// 3. Запуск сервера через Foundation
-async function bootstrap() {
-  const server = new PlatformGrpcServer();
-
-  // Добавляем сервис (Foundation сама обернет методы в контекст)
-  server.addService(salesService.service, implementation);
-
-  await server.listen(Registry.Sales.port);
+class SalesImpl implements SalesService.SalesServiceImplementation {
+  async getPrice(req: SalesService.GetPriceRequest) {
+    console.log(`[Sales] Calculating price for ${req.showtimeId}`);
+    return { amount: 999, currency: "RUB" };
+  }
 }
 
-bootstrap();
+async function main() {
+  const server = createServer();
+  server.add(SalesService.SalesServiceDefinition, new SalesImpl());
+  await server.listen("0.0.0.0:5001");
+  console.log("🚀 Sales Service listening on 5001");
+}
+main();
